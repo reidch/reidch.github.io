@@ -1,0 +1,23 @@
+#version 450 core
+
+layout(local_size_x = 256) in;
+
+layout(std430, binding = 12) buffer densityBuffer{
+    float density[];
+};
+
+layout(std430, binding = 13) buffer pressureBuffer{
+    float pressure[];
+};
+
+uniform float restDensity;
+uniform float stiffness;
+uniform float gammaPower;
+
+void main(){
+    uint id = gl_GlobalInvocationID.x;
+    float rho = density[id];
+    float ratio = rho / restDensity;
+    float P = stiffness * (pow(ratio, gammaPower) - 1.0);
+    pressure[id] = max(0, P);
+}

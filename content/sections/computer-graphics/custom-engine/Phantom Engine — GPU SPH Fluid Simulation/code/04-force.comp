@@ -1,0 +1,146 @@
+#version 450 core
+
+layout(local_size_x = 256) in;
+
+layout(std430, binding=5) buffer tileOffsetBuffer{
+    uint tileOffset[];
+};
+
+layout(std430, binding=7) buffer newParticlePBuffer{
+    vec3 newParticleP[];
+};
+
+layout(std430, binding=8) buffer newParticleVBuffer{
+    vec3 newParticleV[];
+};
+
+layout(std430, binding=9) buffer newParticleFBuffer{
+    vec3 newParticleF[];
+};
+
+layout(std430, binding=11) buffer sortedTileIDBuffer{
+    uint  sortedTileID[];
+};
+
+layout(std430, binding = 12) buffer densityBuffer{
+    float density[];
+};
+
+layout(std430, binding = 13) buffer pressureBuffer{
+    float pressure[];
+};
+
+uniform uint Nx;
+uniform uint Ny;
+uniform uint tileLength;
+uniform float smoothingRadius;
+uniform float mass;
+uniform vec3 sphereCenter;
+uniform float sphereRadius;
+
+float W_Gaussian(float r, float h){
+    float coef = 1.0 / (pow(2 * 3.1415926 * h ,1.5));
+    return coef * exp(- (r * r) / (2 * h * h));
+}
+
+vec3 Grad_W_Gaussian(vec3 dir, float r, float h){
+    float kernel = W_Gaussian(r, h);
+    float coef = 1.0 / (h * h);
+    return coef * kernel * dir;
+}
+
+float Laplacian_W_Viscosity(float r, float h){
+    if (r >= h) return 0.0;
+    float coef = 45.0 / (3.1415926 * h * h * h * h * h * h);
+    return coef * (h - r);
+}
+
+uniform float particleRadius;              
+uniform float sphereStiffness;           
+uniform float sphereDamping;               
+uniform float sphereTangentialDamping;    
+uniform float sphereInfluenceRadius; 
+uniform float sphereForceStrength;
+uniform float sphereDragCoeff;
+uniform vec3  sphereVelocity;
+
+void ApplySphereInteraction(uint tid, inout vec3 f)
+{
+    vec3 p = newParticleP[tid];
+    vec3 v = newParticleV[tid];
+
+    vec3 rel  = p - sphereCenter;
+    float dist = length(rel);
+
+    vec3 n = (dist > 1e-6) ? (rel / dist) : vec3(0.0, 1.0, 0.0);
+
+    float contactDist = sphereRadius + particleRadius;
+    float penetration = contactDist - dist;
+
+    vec3 vRel = v - sphereVelocity;
+
+    if (penetration > 0.0)
+    {
+        float vn = dot(vRel, n);
+
+        vec3 fNormal = sphereStiffness * penetration * n;
+
+        if (vn < 0.0)
+            fNormal += -sphereDamping * vn * n;
+
+        vec3 vTangent = vRel - vn * n;
+        vec3 fTangent = -sphereTangentialDamping * vTangent;
+
+        f += fNormal + fTangent;
+        return;
+    }
+
+    float influenceDist = sphereRadius + sphereInfluenceRadius;
+
+    if (dist < influenceDist)
+    {
+        float q = 1.0 - (dist - sphereRadius) / sphereInfluenceRadius;
+        q = clamp(q, 0.0, 1.0);
+
+        f += sphereForceStrength * q * q * n;
+        f += sphereDragCoeff * q * (sphereVelocity - v);
+    }
+}
+
+void main(){
+    uint tid = gl_GlobalInvocationID.x;
+    uint tile = sortedTileID[tid];
+    vec3 f = vec3(0.0, -9.8 * mass, 0.0);
+    float dens = density[tid];
+    float press = pressure[tid];
+    vec3 vel = newParticleV[tid];
+
+    for (int dz = -1; dz < 2; dz++)
+        for (int dy = -1; dy < 2; dy++)
+            for(int dx = -1; dx < 2; dx++){
+                int tileIdx = int(tile) + dx + dy * int(Nx) + dz * int(Nx * Ny);
+                if(tileIdx < 0 || tileIdx >= tileLength) continue;
+
+                uint tileID = uint(tileIdx);
+
+                uint start = tileOffset[tileID];
+                uint end = tileOffset[tileID + 1];
+
+                float rho = 0;
+                for (uint i = start; i < end; i++){
+                    if(i == tid) continue;
+                    vec3 dir = newParticleP[i] - newParticleP[tid];
+                    f += - mass * (press / (dens * dens) + pressure[i] / (density[i] * density[i])) * Grad_W_Gaussian(dir, length(dir), smoothingRadius);
+
+                    f += mass * 0.01 * (newParticleV[i] - vel) / density[i] * Laplacian_W_Viscosity(length(dir), smoothingRadius);
+                }
+            }
+
+    uint tileID = uint(tile);
+    uint start = tileOffset[tileID];
+    uint end = tileOffset[tileID + 1];
+
+    ApplySphereInteraction(tid, f);
+
+    newParticleF[tid] = f;
+}

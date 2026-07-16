@@ -1,0 +1,322 @@
+#version 450 core
+
+layout(local_size_x = 256) in;
+
+layout(std430, binding = 7) buffer newParticlePBuffer {
+    vec3 newParticleP[];
+};
+
+layout(std430, binding = 8) buffer newParticleVBuffer {
+    vec3 newParticleV[];
+};
+
+layout(std430, binding = 9) buffer newParticleFBuffer {
+    vec3 newParticleF[];
+};
+
+uniform float mass;
+uniform float dt;
+
+const float BOX_MIN = 0.0;
+const float BOX_MAX = 64.0;
+
+const float EPS = 1e-6;
+const float TIME_EPS = 1e-5;
+const float SURFACE_BIAS = 1e-4;
+
+const float RESTITUTION = 0.1;
+const float TANGENT_DAMP = 0.6;
+
+const int MAX_COLLISIONS_PER_STEP = 4;
+
+bool AnyInvalid(vec3 v)
+{
+    return any(isnan(v)) || any(isinf(v));
+}
+
+vec3 PositionAt(vec3 p0, vec3 v0, vec3 a, float t)
+{
+    return p0 + v0 * t + 0.5 * a * t * t;
+}
+
+vec3 VelocityAt(vec3 v0, vec3 a, float t)
+{
+    return v0 + a * t;
+}
+
+vec3 ReflectWithDamping(vec3 v, vec3 n)
+{
+    float vnScalar = dot(v, n);
+    vec3 vn = vnScalar * n;
+    vec3 vt = v - vn;
+    return -RESTITUTION * vn + TANGENT_DAMP * vt;
+}
+
+vec3 RemoveInwardComponent(vec3 v, vec3 n)
+{
+    float vn = dot(v, n);
+    if (vn < 0.0)
+        v -= vn * n;
+    return v;
+}
+
+bool SolvePlaneTime1D(float p0, float v0, float a0, float plane, float tMax, out float tHit)
+{
+    float A = 0.5 * a0;
+    float B = v0;
+    float C = p0 - plane;
+
+    if (abs(A) < EPS)
+    {
+        if (abs(B) < EPS)
+            return false;
+
+        float t = -C / B;
+        if (t >= 0.0 && t <= tMax)
+        {
+            tHit = t;
+            return true;
+        }
+        return false;
+    }
+
+    float disc = B * B - 4.0 * A * C;
+    if (disc < -EPS)
+        return false;
+
+    disc = max(disc, 0.0);
+    float sqrtDisc = sqrt(disc);
+
+    float invDen = 1.0 / (2.0 * A);
+    float t0 = (-B - sqrtDisc) * invDen;
+    float t1 = (-B + sqrtDisc) * invDen;
+
+    bool found = false;
+    float best = 1e30;
+
+    if (t0 >= 0.0 && t0 <= tMax)
+    {
+        best = t0;
+        found = true;
+    }
+
+    if (t1 >= 0.0 && t1 <= tMax && t1 < best)
+    {
+        best = t1;
+        found = true;
+    }
+
+    if (found)
+    {
+        tHit = best;
+        return true;
+    }
+
+    return false;
+}
+
+void ConsiderPlane(
+    int axis,
+    bool isMinPlane,
+    vec3 p0,
+    vec3 v0,
+    vec3 a,
+    float remain,
+    inout bool found,
+    inout float bestT,
+    inout bvec3 hitMin,
+    inout bvec3 hitMax
+){
+    float plane = isMinPlane ? BOX_MIN : BOX_MAX;
+
+    vec3 n = vec3(0.0);
+    n[axis] = isMinPlane ? 1.0 : -1.0; // 指向盒子内部
+
+    float tCand;
+    if (!SolvePlaneTime1D(p0[axis], v0[axis], a[axis], plane, remain, tCand))
+        return;
+
+    if (tCand < TIME_EPS)
+        return;
+
+    vec3 pCand = PositionAt(p0, v0, a, tCand);
+
+    for (int k = 0; k < 3; ++k)
+    {
+        if (k == axis) continue;
+        if (pCand[k] < BOX_MIN - 1e-4 || pCand[k] > BOX_MAX + 1e-4)
+            return;
+    }
+
+    vec3 vCand = VelocityAt(v0, a, tCand);
+    if (dot(vCand, n) >= 0.0)
+        return;
+
+    if (!found || tCand < bestT - TIME_EPS)
+    {
+        found = true;
+        bestT = tCand;
+        hitMin = bvec3(false);
+        hitMax = bvec3(false);
+
+        if (isMinPlane) hitMin[axis] = true;
+        else            hitMax[axis] = true;
+    }
+    else if (abs(tCand - bestT) <= TIME_EPS)
+    {
+        if (isMinPlane) hitMin[axis] = true;
+        else            hitMax[axis] = true;
+    }
+}
+
+vec3 BuildCollisionNormal(bvec3 hitMin, bvec3 hitMax)
+{
+    vec3 n = vec3(0.0);
+
+    if (hitMin.x) n += vec3( 1.0,  0.0,  0.0);
+    if (hitMax.x) n += vec3(-1.0,  0.0,  0.0);
+
+    if (hitMin.y) n += vec3( 0.0,  1.0,  0.0);
+    if (hitMax.y) n += vec3( 0.0, -1.0,  0.0);
+
+    if (hitMin.z) n += vec3( 0.0,  0.0,  1.0);
+    if (hitMax.z) n += vec3( 0.0,  0.0, -1.0);
+
+    float len = length(n);
+    if (len < EPS) return vec3(0.0, 1.0, 0.0);
+    return n / len;
+}
+
+void PushToSurface(inout vec3 p, bvec3 hitMin, bvec3 hitMax)
+{
+    if (hitMin.x) p.x = BOX_MIN + SURFACE_BIAS;
+    if (hitMax.x) p.x = BOX_MAX - SURFACE_BIAS;
+
+    if (hitMin.y) p.y = BOX_MIN + SURFACE_BIAS;
+    if (hitMax.y) p.y = BOX_MAX - SURFACE_BIAS;
+
+    if (hitMin.z) p.z = BOX_MIN + SURFACE_BIAS;
+    if (hitMax.z) p.z = BOX_MAX - SURFACE_BIAS;
+}
+
+void RepairEscapedState(inout vec3 p, inout vec3 v)
+{
+    vec3 n = vec3(0.0);
+    bool collided = false;
+
+    if (p.x < BOX_MIN)
+    {
+        p.x = BOX_MIN + SURFACE_BIAS;
+        if (v.x < 0.0) { n += vec3( 1.0, 0.0, 0.0); collided = true; }
+    }
+    else if (p.x > BOX_MAX)
+    {
+        p.x = BOX_MAX - SURFACE_BIAS;
+        if (v.x > 0.0) { n += vec3(-1.0, 0.0, 0.0); collided = true; }
+    }
+
+    if (p.y < BOX_MIN)
+    {
+        p.y = BOX_MIN + SURFACE_BIAS;
+        if (v.y < 0.0) { n += vec3(0.0,  1.0, 0.0); collided = true; }
+    }
+    else if (p.y > BOX_MAX)
+    {
+        p.y = BOX_MAX - SURFACE_BIAS;
+        if (v.y > 0.0) { n += vec3(0.0, -1.0, 0.0); collided = true; }
+    }
+
+    if (p.z < BOX_MIN)
+    {
+        p.z = BOX_MIN + SURFACE_BIAS;
+        if (v.z < 0.0) { n += vec3(0.0, 0.0,  1.0); collided = true; }
+    }
+    else if (p.z > BOX_MAX)
+    {
+        p.z = BOX_MAX - SURFACE_BIAS;
+        if (v.z > 0.0) { n += vec3(0.0, 0.0, -1.0); collided = true; }
+    }
+
+    if (collided)
+    {
+        n = normalize(n);
+        v = ReflectWithDamping(v, n);
+        v = RemoveInwardComponent(v, n);
+    }
+}
+
+void CollideBox(inout vec3 pVel, inout vec3 pPos, in vec3 a, in float dt)
+{
+    vec3 p = pPos;
+    vec3 v = pVel;
+
+    RepairEscapedState(p, v);
+
+    float remain = dt;
+
+    for (int iter = 0; iter < MAX_COLLISIONS_PER_STEP; ++iter)
+    {
+        if (remain <= TIME_EPS)
+            break;
+
+        bool found = false;
+        float bestT = 1e30;
+        bvec3 hitMin = bvec3(false);
+        bvec3 hitMax = bvec3(false);
+
+        ConsiderPlane(0, true,  p, v, a, remain, found, bestT, hitMin, hitMax);
+        ConsiderPlane(0, false, p, v, a, remain, found, bestT, hitMin, hitMax);
+        ConsiderPlane(1, true,  p, v, a, remain, found, bestT, hitMin, hitMax);
+        ConsiderPlane(1, false, p, v, a, remain, found, bestT, hitMin, hitMax);
+        ConsiderPlane(2, true,  p, v, a, remain, found, bestT, hitMin, hitMax);
+        ConsiderPlane(2, false, p, v, a, remain, found, bestT, hitMin, hitMax);
+
+        if (!found)
+        {
+            p = PositionAt(p, v, a, remain);
+            v = VelocityAt(v, a, remain);
+            remain = 0.0;
+            break;
+        }
+
+        p = PositionAt(p, v, a, bestT);
+        v = VelocityAt(v, a, bestT);
+        remain -= bestT;
+
+        PushToSurface(p, hitMin, hitMax);
+
+        vec3 n = BuildCollisionNormal(hitMin, hitMax);
+        v = ReflectWithDamping(v, n);
+        v = RemoveInwardComponent(v, n);
+    }
+
+    if (remain > TIME_EPS)
+    {
+        p = PositionAt(p, v, a, remain);
+        v = VelocityAt(v, a, remain);
+        RepairEscapedState(p, v);
+    }
+
+    p = clamp(p, vec3(BOX_MIN + SURFACE_BIAS), vec3(BOX_MAX - SURFACE_BIAS));
+
+    pPos = p;
+    pVel = v;
+}
+
+void main()
+{
+    uint tid = gl_GlobalInvocationID.x;
+
+    vec3 p = newParticleP[tid];
+    vec3 v = newParticleV[tid];
+    vec3 f = newParticleF[tid];
+
+    vec3 a = f / mass;
+    if (AnyInvalid(a))
+        a = vec3(0.0, -9.8, 0.0);
+
+    CollideBox(v, p, a, dt);
+
+    newParticleP[tid] = p;
+    newParticleV[tid] = v;
+}

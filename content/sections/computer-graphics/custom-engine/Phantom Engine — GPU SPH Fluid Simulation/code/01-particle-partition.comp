@@ -1,0 +1,49 @@
+#version 450 core
+
+layout(local_size_x = 256) in;
+
+layout(std430, binding = 0) buffer oldParticlePBuffer{
+	vec3 oldParticleP[];
+};
+
+layout(std430, binding = 1) buffer oldParticleVBuffer{
+	vec3 oldParticleV[];
+};
+
+layout(std430, binding = 2) buffer oldParticleFBuffer{
+	vec3 oldParticleF[];
+};
+
+layout(std430, binding = 3) buffer tileIDBuffer{
+	uint tileID[];
+};
+
+layout(std430, binding = 7) buffer newParticlePBuffer{
+	vec3 newParticleP[];
+};
+
+layout(std430, binding = 8) buffer newParticleVPBuffer{
+	vec3 newParticleV[];
+};
+
+layout(std430, binding = 9) buffer newParticleFBuffer{
+	vec3 newParticleF[];
+};
+
+layout(std430, binding = 10) buffer tileWritePtrBuffer{
+	uint tileWritePtr[];
+};
+
+layout(std430, binding = 11) buffer sortedTileIDBuffer{
+	uint sortedTileID[];
+};
+
+void main(){
+	uint tid = gl_GlobalInvocationID.x;
+	uint tile = tileID[tid];
+	uint offset = atomicAdd(tileWritePtr[tile], 1);
+	newParticleP[offset] = oldParticleP[tid];
+	newParticleV[offset] = oldParticleV[tid];
+	newParticleF[offset] = oldParticleF[tid];
+	sortedTileID[offset] = tile;
+}

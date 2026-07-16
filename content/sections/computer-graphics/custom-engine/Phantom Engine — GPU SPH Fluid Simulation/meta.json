@@ -1,0 +1,49 @@
+{
+  "type": "project",
+  "status": "published",
+  "date": "2026-07-16",
+  "featured": true,
+  "github": "",
+  "title": {
+    "en": "Phantom Engine — GPU SPH Fluid Simulation",
+    "ja": "Phantom Engine — GPU SPH流体シミュレーション",
+    "zh": "Phantom Engine——GPU SPH 流体仿真"
+  },
+  "summary": {
+    "en": "A feature demonstration integrated into my in-development Phantom Engine, combining a 1,048,576-particle GPU SPH simulation with interactive collisions and multi-pass screen-space fluid rendering.",
+    "ja": "開発中のPhantom Engineに統合した機能デモです。1,048,576個の粒子を扱うGPU SPHシミュレーション、インタラクティブな衝突処理、マルチパスのスクリーンスペース流体レンダリングを組み合わせています。",
+    "zh": "这是集成于开发中 Phantom Engine 的一项功能展示，将 1,048,576 粒子的 GPU SPH 仿真、交互碰撞与多阶段屏幕空间流体渲染结合在同一管线中。"
+  },
+  "tags": [
+    {
+      "en": "Phantom Engine",
+      "ja": "Phantom Engine",
+      "zh": "Phantom Engine"
+    },
+    {
+      "en": "GPU Simulation",
+      "ja": "GPUシミュレーション",
+      "zh": "GPU 仿真"
+    },
+    {
+      "en": "SPH",
+      "ja": "SPH",
+      "zh": "SPH"
+    },
+    {
+      "en": "Compute Shader",
+      "ja": "Compute Shader",
+      "zh": "Compute Shader"
+    },
+    {
+      "en": "Screen-Space Fluid",
+      "ja": "スクリーンスペース流体",
+      "zh": "屏幕空间流体"
+    },
+    {
+      "en": "Real-Time Rendering",
+      "ja": "リアルタイムレンダリング",
+      "zh": "实时渲染"
+    }
+  ]
+}
