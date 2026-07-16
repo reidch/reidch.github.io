@@ -1,0 +1,44 @@
+{
+  "type": "project",
+  "status": "published",
+  "date": "2026-07-16",
+  "featured": true,
+  "github": "",
+  "title": {
+    "en": "Submerged Church",
+    "ja": "水に沈む教会",
+    "zh": "水浸教堂"
+  },
+  "summary": {
+    "en": "A real-time cinematic animation exploring a submerged church through water simulation, atmospheric lighting, cloth motion and volumetric effects.",
+    "ja": "水の表現、雰囲気のあるライティング、クロスアニメーション、ボリューメトリック表現を通して、水に沈む教会を描いたリアルタイム映像作品です。",
+    "zh": "一部以水浸教堂为主题的实时动画作品，通过水体、氛围光照、布料运动与体积效果塑造沉浸式场景。"
+  },
+  "tags": [
+    {
+      "en": "Unreal Engine",
+      "ja": "Unreal Engine",
+      "zh": "Unreal Engine"
+    },
+    {
+      "en": "Real-Time Animation",
+      "ja": "リアルタイムアニメーション",
+      "zh": "实时动画"
+    },
+    {
+      "en": "Water",
+      "ja": "水表現",
+      "zh": "水体表现"
+    },
+    {
+      "en": "Volumetric Lighting",
+      "ja": "ボリューメトリックライティング",
+      "zh": "体积光照"
+    },
+    {
+      "en": "Cinematic",
+      "ja": "シネマティック",
+      "zh": "影视化表现"
+    }
+  ]
+}
