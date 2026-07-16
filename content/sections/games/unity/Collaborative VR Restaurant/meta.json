@@ -1,0 +1,49 @@
+{
+  "type": "game",
+  "status": "published",
+  "date": "2026-07-16",
+  "featured": false,
+  "github": "",
+  "title": {
+    "en": "Collaborative VR Restaurant",
+    "ja": "協力型VRレストラン",
+    "zh": "协作式 VR 餐厅"
+  },
+  "summary": {
+    "en": "A multiplayer VR restaurant simulation built around role-based cooperation, shared order management, NPC service pressure and validated food preparation.",
+    "ja": "役割分担、共有注文管理、NPCの接客プレッシャー、料理完成判定を中心に設計したマルチプレイヤーVRレストランシミュレーション。",
+    "zh": "一款围绕角色分工、共享订单管理、NPC 服务压力与菜品完成校验设计的多人 VR 餐厅模拟游戏。"
+  },
+  "tags": [
+    {
+      "en": "Multiplayer VR",
+      "ja": "マルチプレイヤーVR",
+      "zh": "多人 VR"
+    },
+    {
+      "en": "Cooperative Gameplay",
+      "ja": "協力型ゲームプレイ",
+      "zh": "协作玩法"
+    },
+    {
+      "en": "Role-Based Design",
+      "ja": "役割ベース設計",
+      "zh": "角色分工"
+    },
+    {
+      "en": "NPC State Machine",
+      "ja": "NPCステートマシン",
+      "zh": "NPC 状态机"
+    },
+    {
+      "en": "Order Management",
+      "ja": "注文管理",
+      "zh": "订单管理"
+    },
+    {
+      "en": "Shared-State Systems",
+      "ja": "共有状態システム",
+      "zh": "共享状态系统"
+    }
+  ]
+}
