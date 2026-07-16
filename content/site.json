@@ -37,20 +37,20 @@
     "zh": "近期项目、艺术作品与思考。"
   },
   "aboutTitle": {
-    "en": "Code, systems and visual expression.",
-    "ja": "コード、システム、そして視覚表現。",
-    "zh": "代码、系统与视觉表达。"
-  },
-  "aboutDescription": {
-    "en": "My work connects computer graphics, artificial intelligence, physical simulation and artistic creation.",
-    "ja": "コンピュータグラフィックス、人工知能、物理シミュレーション、芸術制作を横断して活動しています。",
-    "zh": "我的工作连接计算机图形学、人工智能、物理仿真与艺术创作。"
-  },
-  "aboutBody": {
-    "en": "## About\n\nI build virtual environments that are not only visually compelling, but also structured, interactive and physically meaningful.\n\nThis site is generated from independent content folders, allowing projects, articles, images, videos and source links to evolve without changing the page code.",
-    "ja": "## About\n\n視覚的に魅力的であるだけでなく、構造化され、インタラクティブで、物理的意味を持つ仮想環境を制作しています。\n\nこのサイトは独立したコンテンツフォルダから自動生成され、ページコードを変更せずにプロジェクト、記事、画像、動画、出典リンクを更新できます。",
-    "zh": "## 关于我\n\n我构建的不只是视觉上有吸引力的虚拟环境，也希望它们具有明确结构、交互能力与物理意义。\n\n这个网站由相互独立的内容文件夹自动生成，因此项目、文章、图片、视频与来源链接都可以在不修改网页代码的情况下持续更新。"
-  },
+  "en": "Making the world more beautiful through technology and creativity.",
+  "ja": "テクノロジーと創造力で、世界をより美しく。",
+  "zh": "用科技与创意，让世界更加美丽。"
+},
+"aboutDescription": {
+  "en": "My work brings together computer graphics, artificial intelligence and artistic creation. I pursue expressive and efficient rendering, explore AI for data analysis and information integration, and combine technology with creativity to create new forms of interaction and experience.",
+  "ja": "私の活動は、コンピュータグラフィックス、人工知能、そして芸術表現を結びつけるものです。豊かな表現と高い効率を両立するレンダリングを追求し、データ分析や情報統合へのAI活用を探求しながら、技術と創造力による新しいインタラクションと体験の創出を目指しています。",
+  "zh": "我的工作连接计算机图形学、人工智能与艺术创作。我追求兼具表现力与效率的渲染技术，探索人工智能在数据分析和信息整合中的应用，并尝试将前沿技术与创意结合，创造新的交互方式与体验。"
+},
+"aboutBody": {
+  "en": "## Computer Graphics and Optimization\n\nI focus on creating expressive visual results while improving rendering efficiency. My interests include real-time rendering, physically based rendering, shaders, GPU computation, physical simulation and performance optimization. I care not only about how an image looks, but also about the systems and algorithms that make complex visual effects practical, stable and interactive.\n\n## Artificial Intelligence\n\nI explore how artificial intelligence can be used for effective data analysis, information integration and experience creation. My interests include generative AI, large-model applications, intelligent agents and AI-assisted creative systems. I want to turn fragmented and complex information into useful knowledge, decisions, tools and experiences.\n\n## Artistic Creation\n\nArtistic creation is another essential part of my work. Through digital painting, concept art, character design, fan works and comics, I explore visual language, atmosphere, emotion and storytelling. Art gives direction and meaning to technology, while technology provides new possibilities for artistic expression.\n\n## Vision and Exploration\n\nMy goal is to combine cutting-edge technology with imagination and human-centered design. I want to explore new forms of gameplay, interaction and immersive experience, and to create systems that people can not only observe, but also understand, influence and participate in. Through continuous experimentation, I hope to turn creative ideas into meaningful and beautiful realities.",
+  "ja": "## コンピュータグラフィックスと最適化\n\n私は、豊かな視覚表現を実現すると同時に、レンダリング効率を向上させることに取り組んでいます。リアルタイムレンダリング、物理ベースレンダリング、シェーダー、GPUコンピューティング、物理シミュレーション、パフォーマンス最適化などに関心があります。最終的な映像の美しさだけでなく、複雑な表現を実用的かつ安定して、インタラクティブに動作させるためのシステムやアルゴリズムも重視しています。\n\n## 人工知能\n\n人工知能を活用した効果的なデータ分析、情報統合、そして新しい体験の創造を探求しています。生成AI、大規模モデルの応用、知的エージェント、AIを活用したクリエイティブシステムなどに関心があります。断片的で複雑な情報を、有用な知識、判断、ツール、体験へと変換することを目指しています。\n\n## 芸術創作\n\n芸術創作も、私の活動を構成する重要な要素です。デジタルペインティング、コンセプトアート、キャラクターデザイン、二次創作、漫画を通じて、視覚言語、雰囲気、感情、物語表現を探求しています。芸術は技術に方向性と意味を与え、技術は芸術表現に新しい可能性をもたらします。\n\n## ビジョンと探求\n\n私の目標は、最先端の技術と想像力、そして人を中心としたデザインを融合させることです。新しいゲームプレイ、インタラクション、没入型体験を探求し、人々がただ眺めるだけでなく、理解し、影響を与え、参加できるシステムをつくりたいと考えています。継続的な実験を通じて、創造的なアイデアを意味のある美しい現実へと変えていきたいです。",
+  "zh": "## 计算机图形学与优化\n\n我专注于创造更具表现力的视觉效果，同时不断提高渲染效率。我的关注方向包括实时渲染、基于物理的渲染、着色器、GPU 计算、物理仿真与性能优化。我关心的不只是最终画面是否美观，也关注支撑复杂视觉效果高效、稳定和实时运行的系统与算法。\n\n## 人工智能\n\n我探索如何利用人工智能进行有效的数据分析、信息整合与体验创造。我的关注方向包括生成式 AI、大模型应用、智能 Agent，以及 AI 辅助的创作与生产系统。我希望能够把分散、复杂的信息转化为有价值的知识、判断、工具与体验。\n\n## 艺术创作\n\n艺术创作也是我工作中不可分割的一部分。通过数字绘画、概念艺术、人物设定、同人创作与漫画，我不断探索视觉语言、氛围、情感与叙事。艺术为技术赋予方向与意义，而技术也为艺术表达带来新的可能性。\n\n## 个人愿景与探索\n\n我的目标是将前沿技术、想象力与以人为本的设计结合起来，持续探索新的游戏玩法、交互方式与沉浸式体验。我希望创造的不只是供人观看的作品，而是能够被理解、影响和亲自参与的系统。通过不断实验与创作，我希望把富有想象力的构想转化为有意义且美好的现实。"
+},
   "social": {
     "github": "https://github.com/reidch",
     "email": "mailto:reic_work@outlook.com"
