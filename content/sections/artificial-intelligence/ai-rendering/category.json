@@ -1,0 +1,14 @@
+{
+  "order": 1,
+  "icon": "✦",
+  "title": {
+    "en": "AI Rendering",
+    "ja": "AIレンダリング",
+    "zh": "AI 渲染"
+  },
+  "description": {
+    "en": "Generative 3D, neural rendering and controllable visual generation.",
+    "ja": "生成3D、ニューラルレンダリング、制御可能なビジュアル生成。",
+    "zh": "生成式 3D、神经渲染与可控视觉生成。"
+  }
+}

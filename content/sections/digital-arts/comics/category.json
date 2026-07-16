@@ -1,0 +1,14 @@
+{
+  "order": 5,
+  "icon": "▣",
+  "title": {
+    "en": "Comics",
+    "ja": "漫画",
+    "zh": "漫画"
+  },
+  "description": {
+    "en": "Sequential art, visual stories and short comics.",
+    "ja": "シーケンシャルアート、ビジュアルストーリー、短編漫画。",
+    "zh": "连续叙事艺术、视觉故事与短篇漫画。"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "order": 5,
+  "kind": "blog",
+  "landing": "categories",
+  "icon": "☾",
+  "accent": "#6d28d9",
+  "title": {
+    "en": "Personal Blog",
+    "ja": "個人ブログ",
+    "zh": "个人博客"
+  },
+  "description": {
+    "en": "Philosophical reflections, technology research, technical notes and essays.",
+    "ja": "哲学的思考、技術研究、技術ブログ、随筆。",
+    "zh": "哲学思考、科技研究、技术博客与随笔。"
+  },
+  "categoriesTitle": {
+    "en": "Writing categories",
+    "ja": "文章カテゴリ",
+    "zh": "文章分类"
+  }
+}

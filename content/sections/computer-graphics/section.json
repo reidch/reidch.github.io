@@ -1,0 +1,22 @@
+{
+  "order": 1,
+  "kind": "work",
+  "landing": "categories",
+  "icon": "◈",
+  "accent": "#7c3aed",
+  "title": {
+    "en": "Computer Graphics",
+    "ja": "コンピュータグラフィックス",
+    "zh": "计算机图形学"
+  },
+  "description": {
+    "en": "Real-time rendering, engines, shaders, simulation and graphics systems.",
+    "ja": "リアルタイムレンダリング、エンジン、シェーダー、シミュレーションとグラフィックスシステム。",
+    "zh": "实时渲染、引擎、着色器、仿真与图形系统。"
+  },
+  "categoriesTitle": {
+    "en": "Engines and graphics platforms",
+    "ja": "エンジンとグラフィックス基盤",
+    "zh": "引擎与图形平台"
+  }
+}

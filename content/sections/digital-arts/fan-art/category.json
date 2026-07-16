@@ -1,0 +1,14 @@
+{
+  "order": 4,
+  "icon": "♡",
+  "title": {
+    "en": "Fan Art",
+    "ja": "ファンアート",
+    "zh": "同人作品"
+  },
+  "description": {
+    "en": "Transformative works inspired by existing worlds and characters.",
+    "ja": "既存の世界やキャラクターに着想を得た二次創作。",
+    "zh": "受现有世界与角色启发的二次创作。"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "order": 4,
+  "icon": "⛧",
+  "title": {
+    "en": "Agent Development",
+    "ja": "エージェント開発",
+    "zh": "Agent 研发"
+  },
+  "description": {
+    "en": "Tool-using agents, workflows, memory and multi-agent systems.",
+    "ja": "ツール利用エージェント、ワークフロー、記憶、マルチエージェント。",
+    "zh": "工具调用 Agent、工作流、记忆与多智能体系统。"
+  }
+}

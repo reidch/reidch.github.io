@@ -1,0 +1,14 @@
+{
+  "order": 1,
+  "icon": "∞",
+  "title": {
+    "en": "Philosophical Reflections",
+    "ja": "哲学的思考",
+    "zh": "哲学思考"
+  },
+  "description": {
+    "en": "Notes on knowledge, systems, agency and human experience.",
+    "ja": "知識、システム、主体性、人間経験についての思考。",
+    "zh": "关于知识、系统、能动性与人类经验的思考。"
+  }
+}

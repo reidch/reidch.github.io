@@ -1,0 +1,14 @@
+{
+  "order": 2,
+  "icon": "♜",
+  "title": {
+    "en": "Game AI",
+    "ja": "ゲームAI",
+    "zh": "游戏 AI"
+  },
+  "description": {
+    "en": "Agents, planning, behavior and learning inside games.",
+    "ja": "ゲーム内のエージェント、計画、行動、学習。",
+    "zh": "游戏中的智能体、规划、行为与学习。"
+  }
+}

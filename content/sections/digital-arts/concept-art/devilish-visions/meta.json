@@ -1,0 +1,20 @@
+{
+  "type": "artwork",
+  "status": "published",
+  "date": "2026-07-01",
+  "title": {
+    "en": "Devilish Visions",
+    "ja": "小悪魔のビジョン",
+    "zh": "小恶魔幻想"
+  },
+  "summary": {
+    "en": "A placeholder collection for concept art, environment studies and visual development.",
+    "ja": "コンセプトアート、環境スタディ、ビジュアル開発のためのサンプルコレクション。",
+    "zh": "用于概念艺术、环境练习与视觉开发的示例作品集。"
+  },
+  "tags": [
+    "Concept Art",
+    "Environment",
+    "Visual Development"
+  ]
+}

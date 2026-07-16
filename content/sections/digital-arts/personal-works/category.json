@@ -1,0 +1,14 @@
+{
+  "order": 1,
+  "icon": "✧",
+  "title": {
+    "en": "Personal Works",
+    "ja": "個人制作",
+    "zh": "个人创作"
+  },
+  "description": {
+    "en": "Independent visual experiments and original artworks.",
+    "ja": "独立したビジュアル実験とオリジナル作品。",
+    "zh": "独立视觉实验与原创作品。"
+  }
+}

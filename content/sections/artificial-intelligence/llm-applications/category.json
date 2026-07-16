@@ -1,0 +1,14 @@
+{
+  "order": 3,
+  "icon": "◇",
+  "title": {
+    "en": "Large-Model Applications",
+    "ja": "大規模モデル応用",
+    "zh": "大模型应用"
+  },
+  "description": {
+    "en": "Multimodal models, local LLM systems and practical applications.",
+    "ja": "マルチモーダルモデル、ローカルLLM、実用システム。",
+    "zh": "多模态模型、本地大模型系统与实际应用。"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "order": 2,
+  "icon": "⌬",
+  "title": {
+    "en": "Technology Research",
+    "ja": "技術研究",
+    "zh": "科技研究"
+  },
+  "description": {
+    "en": "Research commentary, paper notes and emerging ideas.",
+    "ja": "研究解説、論文ノート、新しいアイデア。",
+    "zh": "研究评论、论文笔记与新兴观点。"
+  }
+}

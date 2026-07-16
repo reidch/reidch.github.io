@@ -1,0 +1,14 @@
+{
+  "order": 3,
+  "icon": "♚",
+  "title": {
+    "en": "Character Design",
+    "ja": "キャラクターデザイン",
+    "zh": "人物设定"
+  },
+  "description": {
+    "en": "Character sheets, costume design and identity exploration.",
+    "ja": "キャラクター設定、衣装、アイデンティティの探求。",
+    "zh": "角色设定、服装设计与身份探索。"
+  }
+}

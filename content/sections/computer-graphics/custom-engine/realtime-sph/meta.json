@@ -1,0 +1,22 @@
+{
+  "type": "project",
+  "status": "published",
+  "date": "2026-04-10",
+  "github": "https://github.com/reidch",
+  "title": {
+    "en": "Real-Time SPH Simulation",
+    "ja": "リアルタイムSPHシミュレーション",
+    "zh": "实时 SPH 流体仿真"
+  },
+  "summary": {
+    "en": "A GPU compute-shader SPH system simulating more than two million particles in real time.",
+    "ja": "200万以上の粒子をリアルタイムで処理するGPU Compute ShaderベースのSPHシステム。",
+    "zh": "使用 GPU Compute Shader 实时模拟超过两百万粒子的 SPH 系统。"
+  },
+  "tags": [
+    "SPH",
+    "Compute Shader",
+    "GPU",
+    "Simulation"
+  ]
+}

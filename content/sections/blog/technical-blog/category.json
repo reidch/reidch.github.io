@@ -1,0 +1,14 @@
+{
+  "order": 3,
+  "icon": "</>",
+  "title": {
+    "en": "Technical Blog",
+    "ja": "技術ブログ",
+    "zh": "技术博客"
+  },
+  "description": {
+    "en": "Implementation notes, graphics, AI and engineering practice.",
+    "ja": "実装ノート、グラフィックス、AI、エンジニアリング実践。",
+    "zh": "实现笔记、图形学、AI 与工程实践。"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "order": 2,
+  "icon": "✎",
+  "title": {
+    "en": "Concept Art",
+    "ja": "コンセプトアート",
+    "zh": "概念艺术"
+  },
+  "description": {
+    "en": "Environment, prop and visual-development concepts.",
+    "ja": "環境、プロップ、ビジュアル開発のコンセプト。",
+    "zh": "环境、道具与视觉开发概念设计。"
+  }
+}

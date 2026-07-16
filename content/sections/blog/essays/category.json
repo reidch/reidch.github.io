@@ -1,0 +1,14 @@
+{
+  "order": 4,
+  "icon": "✒",
+  "title": {
+    "en": "Essays & Notes",
+    "ja": "随筆・ノート",
+    "zh": "随笔"
+  },
+  "description": {
+    "en": "Personal observations, unfinished thoughts and everyday writing.",
+    "ja": "個人的観察、未完成の思考、日常の文章。",
+    "zh": "个人观察、未完成的想法与日常写作。"
+  }
+}

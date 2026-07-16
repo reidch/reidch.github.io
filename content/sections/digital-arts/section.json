@@ -1,0 +1,22 @@
+{
+  "order": 4,
+  "kind": "work",
+  "landing": "categories",
+  "icon": "✎",
+  "accent": "#db2777",
+  "title": {
+    "en": "Digital Arts",
+    "ja": "デジタルアート",
+    "zh": "数字艺术"
+  },
+  "description": {
+    "en": "Personal creation, concept art, character design, fan works and comics.",
+    "ja": "個人制作、コンセプトアート、キャラクターデザイン、ファンアート、漫画。",
+    "zh": "个人创作、概念艺术、人物设定、同人作品与漫画。"
+  },
+  "categoriesTitle": {
+    "en": "Art collections",
+    "ja": "アートコレクション",
+    "zh": "艺术作品分类"
+  }
+}

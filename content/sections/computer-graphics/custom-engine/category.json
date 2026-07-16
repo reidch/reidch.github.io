@@ -1,0 +1,14 @@
+{
+  "order": 3,
+  "icon": "◈",
+  "title": {
+    "en": "Custom Engine",
+    "ja": "自作エンジン",
+    "zh": "自研引擎"
+  },
+  "description": {
+    "en": "OpenGL, GLSL, GPU simulation and original rendering architecture.",
+    "ja": "OpenGL、GLSL、GPUシミュレーションと独自レンダリング設計。",
+    "zh": "OpenGL、GLSL、GPU 仿真与原创渲染架构。"
+  }
+}

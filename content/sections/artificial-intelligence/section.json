@@ -1,0 +1,22 @@
+{
+  "order": 3,
+  "kind": "work",
+  "landing": "categories",
+  "icon": "✦",
+  "accent": "#9333ea",
+  "title": {
+    "en": "Artificial Intelligence",
+    "ja": "人工知能",
+    "zh": "人工智能"
+  },
+  "description": {
+    "en": "Generative rendering, game AI, large-model applications and agent systems.",
+    "ja": "生成レンダリング、ゲームAI、大規模モデル応用、エージェントシステム。",
+    "zh": "生成式渲染、游戏 AI、大模型应用与 Agent 系统。"
+  },
+  "categoriesTitle": {
+    "en": "AI research and applications",
+    "ja": "AI研究と応用",
+    "zh": "AI 研究与应用"
+  }
+}

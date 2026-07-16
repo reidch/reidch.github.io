@@ -1,0 +1,22 @@
+{
+  "order": 2,
+  "kind": "work",
+  "landing": "items",
+  "icon": "♟",
+  "accent": "#c026d3",
+  "title": {
+    "en": "Games",
+    "ja": "ゲーム",
+    "zh": "游戏"
+  },
+  "description": {
+    "en": "Playable projects, game mechanics, interactive storytelling and prototypes.",
+    "ja": "プレイ可能な作品、ゲームメカニクス、インタラクティブストーリーとプロトタイプ。",
+    "zh": "可游玩的项目、游戏机制、交互叙事与原型。"
+  },
+  "itemsTitle": {
+    "en": "Game projects",
+    "ja": "ゲームプロジェクト",
+    "zh": "游戏项目"
+  }
+}
