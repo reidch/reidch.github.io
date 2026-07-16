@@ -1,7 +1,7 @@
 {
   "order": 2,
   "kind": "work",
-  "landing": "items",
+  "landing": "categories",
   "icon": "♟",
   "accent": "#c026d3",
   "title": {
@@ -10,13 +10,13 @@
     "zh": "游戏"
   },
   "description": {
-    "en": "Playable projects, game mechanics, interactive storytelling and prototypes.",
-    "ja": "プレイ可能な作品、ゲームメカニクス、インタラクティブストーリーとプロトタイプ。",
-    "zh": "可游玩的项目、游戏机制、交互叙事与原型。"
+    "en": "Playable games, interactive experiences and gameplay experiments developed with Unity and Unreal Engine.",
+    "ja": "UnityとUnreal Engineを使用して制作したゲーム、インタラクティブ体験、ゲームプレイ実験。",
+    "zh": "使用 Unity 与 Unreal Engine 开发的游戏、交互体验与玩法实验。"
   },
-  "itemsTitle": {
-    "en": "Game projects",
-    "ja": "ゲームプロジェクト",
-    "zh": "游戏项目"
+  "categoriesTitle": {
+    "en": "Game Development Platforms",
+    "ja": "ゲーム開発プラットフォーム",
+    "zh": "游戏开发平台"
   }
 }
