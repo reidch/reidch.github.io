@@ -1,0 +1,14 @@
+{
+  "order": 1,
+  "icon": "◆",
+  "title": {
+    "en": "Unity",
+    "ja": "Unity",
+    "zh": "Unity"
+  },
+  "description": {
+    "en": "Games, gameplay systems and interactive experiences developed with Unity.",
+    "ja": "Unityを使用して開発したゲーム、ゲームプレイシステム、インタラクティブ体験。",
+    "zh": "使用 Unity 开发的游戏、玩法系统与交互体验。"
+  }
+}
