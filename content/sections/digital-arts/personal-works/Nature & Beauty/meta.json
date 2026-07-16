@@ -1,0 +1,21 @@
+{
+  "type": "artwork",
+  "status": "published",
+  "date": "2026-07-16",
+  "title": {
+    "en": "Nature & Beauty",
+    "ja": "自然と美",
+    "zh": "自然与美"
+  },
+  "summary": {
+    "en": "An original art series exploring the forms, colors, rhythms and quiet vitality of the natural world.",
+    "ja": "自然が持つ形、色彩、リズム、そして静かな生命力を探るオリジナルアートシリーズ。",
+    "zh": "一组探索自然的形态、色彩、节奏与静谧生命力的原创艺术系列。"
+  },
+  "tags": [
+    "Original Art",
+    "Nature",
+    "Atmosphere",
+    "Visual Exploration"
+  ]
+}
