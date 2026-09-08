@@ -1,0 +1,49 @@
+{
+  "type": "research-project",
+  "status": "published",
+  "date": "2026-08-12",
+  "featured": true,
+  "github": "",
+  "title": {
+    "en": "Geometry-First 3D Scene Generation",
+    "ja": "ジオメトリ優先3Dシーン生成",
+    "zh": "几何优先的全自动 3D 场景生成"
+  },
+  "summary": {
+    "en": "A fully automated framework that turns a declarative indoor-scene description into a controllable persistent 3D environment by keeping explicit geometry authoritative across asset generation, camera planning, multi-view synthesis and depth-supervised 3D Gaussian Splatting.",
+    "ja": "宣言的な室内シーン記述から、アセット生成、カメラ計画、マルチビュー生成、深度教師付き3D Gaussian Splattingまで明示的ジオメトリを一貫した空間基準として保持し、制御可能で永続的な3D環境を全自動生成するフレームワークです。",
+    "zh": "一个从声明式室内场景描述出发的全自动框架：在资产生成、相机规划、多视角生成与深度监督 3D Gaussian Splatting 的全过程中保持显式几何的权威性，最终生成可控、可从新视角探索的持久 3D 环境。"
+  },
+  "tags": [
+    {
+      "en": "3D Scene Generation",
+      "ja": "3Dシーン生成",
+      "zh": "3D 场景生成"
+    },
+    {
+      "en": "Generative AI",
+      "ja": "生成AI",
+      "zh": "生成式 AI"
+    },
+    {
+      "en": "Geometry-First",
+      "ja": "ジオメトリ優先",
+      "zh": "几何优先"
+    },
+    {
+      "en": "Multi-View Generation",
+      "ja": "マルチビュー生成",
+      "zh": "多视角生成"
+    },
+    {
+      "en": "3D Gaussian Splatting",
+      "ja": "3D Gaussian Splatting",
+      "zh": "3D Gaussian Splatting"
+    },
+    {
+      "en": "Automated Pipeline",
+      "ja": "自動化パイプライン",
+      "zh": "自动化管线"
+    }
+  ]
+}
